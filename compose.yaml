@@ -1,0 +1,40 @@
+name: mcp-evidence-lab
+services:
+  manager:
+    image: wazuh/wazuh-manager:4.14.10@sha256:dcda4869e2f792e92f03bce93f85b4bdf103756ea61cfca8ba9f3eabeb05365b
+    platform: linux/amd64
+    entrypoint: ["/bin/sh", "/lab-manager.sh"]
+    cpus: 1.5
+    mem_limit: 2g
+    pids_limit: 256
+    network_mode: none
+    restart: "no"
+    volumes:
+      - ./rules/mcp_rules.xml:/var/ossec/etc/rules/mcp_rules.xml:ro
+      - ./scripts/manager.sh:/lab-manager.sh:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: "1"
+  fixture:
+    image: python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
+    command: ["timeout", "45", "python", "-u", "/lab/scenarios.py"]
+    cpus: 0.5
+    mem_limit: 256m
+    pids_limit: 64
+    network_mode: none
+    read_only: true
+    restart: "no"
+    tmpfs:
+      - /tmp:size=16m
+    environment:
+      LAB_EVENTS: /evidence/events.jsonl
+    volumes:
+      - ./lab:/lab:ro
+      - ./evidence:/evidence
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: "1"
