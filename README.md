@@ -3,6 +3,9 @@
 Work in progress: deterministic MCP tool misuse, Wazuh rules, and explicit evidence limits.
 No paid API, real credentials, or internet-facing service. Not a prompt injection exploit.
 
+[Read the walkthrough](https://samsploit1.github.io/posts/mcp-wazuh-evidence.html) ·
+[Inspect the recorded eight-case run](results/2026-11-13/)
+
 ## Run
 
 Requires Docker Compose, Python 3, and enough disk for the images. On Apple Silicon,

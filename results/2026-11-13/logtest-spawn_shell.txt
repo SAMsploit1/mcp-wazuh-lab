@@ -1,0 +1,23 @@
+
+
+Starting wazuh-logtest v4.14.10
+Type one log per line
+
+**Phase 1: Completed pre-decoding.
+	full event: '{"integration": "mcp_lab", "mcp_action": "process_start", "tool": "spawn_shell", "executable": "/bin/sh"}'
+
+**Phase 2: Completed decoding.
+	name: 'json'
+	executable: '/bin/sh'
+	integration: 'mcp_lab'
+	mcp_action: 'process_start'
+	tool: 'spawn_shell'
+
+**Phase 3: Completed filtering (rules).
+	id: '110502'
+	level: '8'
+	description: 'MCP lab tool started a shell'
+	groups: '['mcp_lab']'
+	firedtimes: '1'
+	mail: 'False'
+**Alert to be generated.

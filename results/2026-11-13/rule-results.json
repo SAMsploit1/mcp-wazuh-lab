@@ -1,0 +1,50 @@
+[
+  {
+    "case": "read_public",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "read_dummy_secret",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "spawn_shell",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "send_dummy",
+    "expected": "110503",
+    "actual": "110503",
+    "passed": true
+  },
+  {
+    "case": "unrelated source",
+    "expected": null,
+    "actual": null,
+    "passed": true
+  },
+  {
+    "case": "ordinary process",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "ordinary send",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "missing sensitivity",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  }
+]
