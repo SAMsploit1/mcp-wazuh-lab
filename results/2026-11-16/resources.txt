@@ -1,0 +1,2 @@
+CONTAINER ID   NAME                         CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK I/O         PIDS
+5c311c3a42df   mcp-evidence-lab-manager-1   0.07%     86.07MiB / 2GiB     4.20%     0B / 0B   81.9MB / 15.7MB   56

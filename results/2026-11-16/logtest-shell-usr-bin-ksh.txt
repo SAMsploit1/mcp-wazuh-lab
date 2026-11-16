@@ -1,0 +1,25 @@
+
+
+Starting wazuh-logtest v4.14.10
+Type one log per line
+
+**Phase 1: Completed pre-decoding.
+	full event: '{"integration": "mcp_lab", "mcp_action": "process_start", "executable": "/usr/bin/ksh"}'
+
+**Phase 2: Completed decoding.
+	name: 'json'
+	executable: '/usr/bin/ksh'
+	integration: 'mcp_lab'
+	mcp_action: 'process_start'
+
+**Phase 3: Completed filtering (rules).
+	id: '110502'
+	level: '8'
+	description: 'MCP tool started a Unix shell'
+	groups: '['mcp_lab']'
+	firedtimes: '1'
+	mail: 'False'
+	mitre.id: '['T1059.004']'
+	mitre.tactic: '['Execution']'
+	mitre.technique: '['Unix Shell']'
+**Alert to be generated.

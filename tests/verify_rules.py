@@ -3,18 +3,14 @@ import json
 from pathlib import Path
 import re
 import subprocess
+from cases import regression_cases
 
 root = Path(__file__).resolve().parents[1]
 events = [json.loads(line) for line in (root/'evidence/events.jsonl').read_text().splitlines()]
 expected = {'read_public': None, 'read_dummy_secret': '110501', 'spawn_shell': '110502', 'send_dummy': '110503'}
 assert [e['tool'] for e in events] == list(expected), 'Expected exactly four fresh scenario events'
 cases = [(e['tool'], e, expected[e['tool']]) for e in events]
-cases += [
-    ('unrelated source', dict(integration='other', mcp_action='file_read', sensitive='yes'), None),
-    ('ordinary process', dict(integration='mcp_lab', mcp_action='process_start', executable='/usr/bin/python3'), None),
-    ('ordinary send', dict(integration='mcp_lab', mcp_action='network_send', sensitive='no'), None),
-    ('missing sensitivity', dict(integration='mcp_lab', mcp_action='file_read'), None),
-]
+cases += regression_cases()
 report = []
 for name, event, wanted in cases:
     result = subprocess.run(['docker', 'compose', 'exec', '-T', 'manager',
@@ -26,9 +22,9 @@ for name, event, wanted in cases:
     assert not re.search(r'ERROR|CRITICAL', output), output
     found = re.findall(r"id: '([0-9]+)'", output)
     matched = found[-1] if found else None
-    passed = matched == wanted if wanted else matched not in {'110501', '110502', '110503'}
+    passed = matched == wanted if wanted else matched not in {'110501', '110502', '110503', '110504', '110505'}
     report.append(dict(case=name, expected=wanted, actual=matched, passed=passed))
-    (root/'evidence'/('logtest-'+name.replace(' ', '-')+'.txt')).write_text(output)
+    (root/'evidence'/('logtest-'+re.sub(r'[^A-Za-z0-9_-]+', '-', name)+'.txt')).write_text(output)
 (root/'evidence/rule-results.json').write_text(json.dumps(report, indent=2)+'\n')
 print(json.dumps(report, indent=2))
 assert all(row['passed'] for row in report), 'Rule regression detected'

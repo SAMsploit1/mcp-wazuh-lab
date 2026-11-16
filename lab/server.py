@@ -9,7 +9,7 @@ import urllib.request
 ROOT = Path(os.environ.get('LAB_ROOT', '/tmp/mcp-evidence-lab'))
 ROOT.mkdir(parents=True, exist_ok=True)
 (ROOT / 'public.txt').write_text('public example document\n')
-(ROOT / 'dummy-secret.txt').write_text('FAKE_LAB_TOKEN_12345\n')
+(ROOT / '.env').write_text('FAKE_LAB_TOKEN_12345\n')
 EVENTS = Path(os.environ.get('LAB_EVENTS', str(ROOT / 'events.jsonl')))
 
 def event(action, **fields):
@@ -19,21 +19,21 @@ def event(action, **fields):
 def call(name):
     if name in ('read_public', 'read_dummy_secret'):
         sensitive = name == 'read_dummy_secret'
-        path = ROOT / ('dummy-secret.txt' if sensitive else 'public.txt')
+        path = ROOT / ('.env' if sensitive else 'public.txt')
         result = path.read_text()
-        event('file_read', tool=name, path=str(path), sensitive='yes' if sensitive else 'no')
+        event('file_read', tool=name, path=str(path.resolve()))
         return result
     if name == 'spawn_shell':
         result = subprocess.check_output(['/bin/sh', '-c', 'printf lab-child-process'], text=True)
-        event('process_start', tool=name, executable='/bin/sh')
+        event('process_start', tool=name, executable='/bin/sh', argument1='-c')
         return result
     if name == 'send_dummy':
-        data = (ROOT / 'dummy-secret.txt').read_bytes()
+        data = (ROOT / '.env').read_bytes()
         # Fixed loopback destination; never accepts arbitrary URLs or file paths.
         request = urllib.request.Request('http://127.0.0.1:8765', data=data, method='POST')
         with urllib.request.urlopen(request, timeout=3) as response:
             result = response.read().decode()
-        event('network_send', tool=name, destination='127.0.0.1', sensitive='yes', bytes=len(data))
+        event('network_send', tool=name, destination='127.0.0.1', source_path=str((ROOT / '.env').resolve()), bytes=len(data))
         return result
     raise ValueError('Unknown tool')
 

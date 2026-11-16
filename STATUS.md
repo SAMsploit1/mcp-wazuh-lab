@@ -38,3 +38,23 @@ writing the publication as a validated detection guide.
 
 GitHub connection is only needed when ready to create or push the public repository.
 No repository was created or code published during this run.
+
+
+## Reviewer revision — 16 November 2026
+
+Implemented Farouk Musa's four requests: practical telemetry/collection guidance
+in TELEMETRY.md, Wazuh-side credential-path classification (no sensitivity label),
+expanded shell paths plus inline Python/Node rules, and ATT&CK tags. New rule IDs
+110504–110505 extend the MCP pack's 110500–110505 range.
+
+Static XML and 66 policy regressions pass. The updated full runner passed
+70/70 cases on real Wazuh 4.14.10 in a two-core, 8 GiB GitHub Codespace:
+four fresh fixture events plus 66 constructed regressions. Raw output confirms
+48 positive matches with expected levels/ATT&CK tags and 22 negative controls.
+All 70 events decoded as JSON. Tested source hashes were verified locally.
+Evidence is saved in results/2026-11-16/. The runner removed its containers;
+the Codespace was deleted after the evidence download.
+The 13 November run above describes the original rules only; its sensitivity-label
+finding is historical and is addressed by this revision. Independent host telemetry
+and end-to-end ingestion remain unvalidated. Publication source was revised in the
+separate SAMsploit1.github.io Codex worktree; no deployment is implied here.

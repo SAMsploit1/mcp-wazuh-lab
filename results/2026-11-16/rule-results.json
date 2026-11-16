@@ -1,0 +1,422 @@
+[
+  {
+    "case": "read_public",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "read_dummy_secret",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "spawn_shell",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "send_dummy",
+    "expected": "110503",
+    "actual": "110503",
+    "passed": true
+  },
+  {
+    "case": "unrelated source",
+    "expected": null,
+    "actual": null,
+    "passed": true
+  },
+  {
+    "case": "ordinary process",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "ordinary send",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "missing path",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "sensitive label cannot promote public path",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "missing transfer source",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "read /home/lab/.ssh/id_ed25519",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "read label no /home/lab/.ssh/id_ed25519",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "send /home/lab/.ssh/id_ed25519",
+    "expected": "110503",
+    "actual": "110503",
+    "passed": true
+  },
+  {
+    "case": "read ~/.ssh/config",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "read label no ~/.ssh/config",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "send ~/.ssh/config",
+    "expected": "110503",
+    "actual": "110503",
+    "passed": true
+  },
+  {
+    "case": "read /srv/app/.env",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "read label no /srv/app/.env",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "send /srv/app/.env",
+    "expected": "110503",
+    "actual": "110503",
+    "passed": true
+  },
+  {
+    "case": "read /srv/app/.env.production",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "read label no /srv/app/.env.production",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "send /srv/app/.env.production",
+    "expected": "110503",
+    "actual": "110503",
+    "passed": true
+  },
+  {
+    "case": "read /home/lab/.aws/credentials",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "read label no /home/lab/.aws/credentials",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "send /home/lab/.aws/credentials",
+    "expected": "110503",
+    "actual": "110503",
+    "passed": true
+  },
+  {
+    "case": "read /home/lab/.kube/config",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "read label no /home/lab/.kube/config",
+    "expected": "110501",
+    "actual": "110501",
+    "passed": true
+  },
+  {
+    "case": "send /home/lab/.kube/config",
+    "expected": "110503",
+    "actual": "110503",
+    "passed": true
+  },
+  {
+    "case": "public /tmp/not.env",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "public /tmp/.envdir/file",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "public /tmp/.ssh-backup/key",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "public /home/lab/.aws/credentials.bak",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "public /home/lab/.kube/configuration",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "shell /bin/sh",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /bin/bash",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /bin/dash",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /bin/zsh",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /bin/ksh",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /bin/ash",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/bin/sh",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/bin/bash",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/bin/dash",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/bin/zsh",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/bin/ksh",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/bin/ash",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/local/bin/sh",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/local/bin/bash",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/local/bin/dash",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/local/bin/zsh",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/local/bin/ksh",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "shell /usr/local/bin/ash",
+    "expected": "110502",
+    "actual": "110502",
+    "passed": true
+  },
+  {
+    "case": "other executable /usr/bin/bashful",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "other executable /tmp/bash",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "other executable /usr/bin/env",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "inline /usr/bin/python3",
+    "expected": "110504",
+    "actual": "110504",
+    "passed": true
+  },
+  {
+    "case": "script /usr/bin/python3",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "inline /bin/python",
+    "expected": "110504",
+    "actual": "110504",
+    "passed": true
+  },
+  {
+    "case": "script /bin/python",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "inline /usr/local/bin/python3.12",
+    "expected": "110504",
+    "actual": "110504",
+    "passed": true
+  },
+  {
+    "case": "script /usr/local/bin/python3.12",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "inline /usr/bin/node -e",
+    "expected": "110505",
+    "actual": "110505",
+    "passed": true
+  },
+  {
+    "case": "inline /usr/bin/node --eval",
+    "expected": "110505",
+    "actual": "110505",
+    "passed": true
+  },
+  {
+    "case": "script /usr/bin/node",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "inline /usr/local/bin/node -e",
+    "expected": "110505",
+    "actual": "110505",
+    "passed": true
+  },
+  {
+    "case": "inline /usr/local/bin/node --eval",
+    "expected": "110505",
+    "actual": "110505",
+    "passed": true
+  },
+  {
+    "case": "script /usr/local/bin/node",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "inline /bin/nodejs -e",
+    "expected": "110505",
+    "actual": "110505",
+    "passed": true
+  },
+  {
+    "case": "inline /bin/nodejs --eval",
+    "expected": "110505",
+    "actual": "110505",
+    "passed": true
+  },
+  {
+    "case": "script /bin/nodejs",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  },
+  {
+    "case": "wrong action",
+    "expected": null,
+    "actual": "110500",
+    "passed": true
+  }
+]

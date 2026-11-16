@@ -1,0 +1,5 @@
+Linux x86_64
+Docker server: 29.9.2-2
+Docker Compose version v5.6.1
+Python 3.14.2
+Wazuh image architecture: amd64

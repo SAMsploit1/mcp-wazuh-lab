@@ -4,7 +4,8 @@ Work in progress: deterministic MCP tool misuse, Wazuh rules, and explicit evide
 No paid API, real credentials, or internet-facing service. Not a prompt injection exploit.
 
 [Read the walkthrough](https://samsploit1.github.io/posts/mcp-wazuh-evidence.html) ·
-[Inspect the recorded eight-case run](results/2026-11-13/)
+[Inspect the revised 70-case run](results/2026-11-16/) ·
+[Original eight-case run](results/2026-11-13/)
 
 ## Run
 
@@ -31,17 +32,40 @@ The manager image runs the database and analysis daemons and the actual `wazuh-l
 binary. This phase validates decoding and rule matching, not manager ingestion,
 agent collection, alert delivery, or a running SOC deployment.
 
-## What the first phase proves
+## Original recorded run (13 November 2026)
 
 The stdio fixture handles initialize, tools/list and tools/call. A deterministic
 client runs four actual actions; the server emits structured JSON application
 events. Real Wazuh logtest evaluates those events plus four negative controls.
 The result files distinguish expected matches from observed matches.
 
-The file sensitivity label is supplied by the fixture. A compromised server could
-lie or suppress all these events. These rules demonstrate application-log
+The original run used a fixture-supplied sensitivity label. The revised rules
+classify reported paths in Wazuh instead; a compromised server could still lie
+about a path or suppress all these events. These rules demonstrate application-log
 integration, not independent host detection. They do not infer malicious intent
 from a shell alone, and the loopback transfer does not demonstrate internet exfiltration.
+
+## Reviewer revisions (16 November 2026)
+
+- [Real-deployment telemetry and collection guide](TELEMETRY.md): SDK wrappers,
+  gateways/proxies, desktop/IDE logs, normalization, and agent collection setup.
+- Path policy in Wazuh for `.ssh/`, `.env`/`.env.*`, `.aws/credentials`, `.kube/config`.
+  File reads use `path`; transfers use `source_path`; `sensitive` is ignored.
+  The fixture now creates a dummy `.env` under its temporary lab directory.
+- Shell paths expanded; separate Python `-c` and Node `-e`/`--eval` rules added.
+- ATT&CK tags added to rules 110501–110505. Loopback transfer remains local only.
+
+Run `python3 tests/check_policy.py` for 66 static XML/regex policy checks.
+`sh scripts/run.sh` runs four fresh fixture events plus those 66 regression cases
+through real Wazuh (70 cases total). The revised engine run passed **70/70** on
+Wazuh 4.14.10 in a disposable two-core GitHub Codespace on 16 November 2026:
+48 expected detections and 22 negative controls. All events decoded as JSON;
+positive levels and ATT&CK tags were also verified from raw engine output.
+See [raw evidence and source hashes](results/2026-11-16/). The containers and
+test Codespace were deleted after retrieving the evidence. Static checks use
+Python regex and supplement the actual Wazuh run.
+The saved eight-case run and its screenshots predate these changes and remain
+unchanged as historical evidence, not validation of the revised rules.
 
 ## Next evidence layer
 
