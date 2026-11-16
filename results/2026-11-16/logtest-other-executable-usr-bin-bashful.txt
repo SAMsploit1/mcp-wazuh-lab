@@ -1,0 +1,21 @@
+
+
+Starting wazuh-logtest v4.14.10
+Type one log per line
+
+**Phase 1: Completed pre-decoding.
+	full event: '{"integration": "mcp_lab", "mcp_action": "process_start", "executable": "/usr/bin/bashful"}'
+
+**Phase 2: Completed decoding.
+	name: 'json'
+	executable: '/usr/bin/bashful'
+	integration: 'mcp_lab'
+	mcp_action: 'process_start'
+
+**Phase 3: Completed filtering (rules).
+	id: '110500'
+	level: '0'
+	description: 'MCP normalized application event'
+	groups: '['mcp_lab']'
+	firedtimes: '1'
+	mail: 'False'

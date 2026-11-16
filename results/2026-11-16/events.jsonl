@@ -1,0 +1,4 @@
+{"integration": "mcp_lab", "mcp_action": "file_read", "tool": "read_public", "path": "/tmp/mcp-evidence-lab/public.txt"}
+{"integration": "mcp_lab", "mcp_action": "file_read", "tool": "read_dummy_secret", "path": "/tmp/mcp-evidence-lab/.env"}
+{"integration": "mcp_lab", "mcp_action": "process_start", "tool": "spawn_shell", "executable": "/bin/sh", "argument1": "-c"}
+{"integration": "mcp_lab", "mcp_action": "network_send", "tool": "send_dummy", "destination": "127.0.0.1", "source_path": "/tmp/mcp-evidence-lab/.env", "bytes": 21}

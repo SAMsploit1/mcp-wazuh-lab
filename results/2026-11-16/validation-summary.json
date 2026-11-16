@@ -1,0 +1,12 @@
+{
+  "cases": 70,
+  "passed": 70,
+  "positive_cases": 48,
+  "negative_controls": 22,
+  "json_decoder_checks": 70,
+  "expected_level_and_mitre_checks": 48,
+  "tested_source_hashes_verified": true,
+  "runtime": "GitHub Codespaces, 2 CPUs, 8 GiB RAM, Linux x86_64",
+  "wazuh_version": "4.14.10",
+  "containers_removed": true
+}

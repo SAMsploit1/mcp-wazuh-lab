@@ -1,5 +1,8 @@
 # Recorded run: 13 November 2026
 
+**Historical evidence:** this run predates the 16 November path-policy, interpreter,
+and ATT&CK revisions. It does not validate the current rules.
+
 Wazuh 4.14.10, amd64 image under emulation on an Apple M4 host. Python fixture
 ran as arm64. `events.jsonl` contains the four actual application events;
 `logtest-*.txt` contains the raw rule-engine output for each case;

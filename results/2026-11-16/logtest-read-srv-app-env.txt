@@ -1,0 +1,25 @@
+
+
+Starting wazuh-logtest v4.14.10
+Type one log per line
+
+**Phase 1: Completed pre-decoding.
+	full event: '{"integration": "mcp_lab", "mcp_action": "file_read", "path": "/srv/app/.env"}'
+
+**Phase 2: Completed decoding.
+	name: 'json'
+	integration: 'mcp_lab'
+	mcp_action: 'file_read'
+	path: '/srv/app/.env'
+
+**Phase 3: Completed filtering (rules).
+	id: '110501'
+	level: '8'
+	description: 'MCP tool read a credential-related path'
+	groups: '['mcp_lab']'
+	firedtimes: '1'
+	mail: 'False'
+	mitre.id: '['T1552.001']'
+	mitre.tactic: '['Credential Access']'
+	mitre.technique: '['Credentials In Files']'
+**Alert to be generated.

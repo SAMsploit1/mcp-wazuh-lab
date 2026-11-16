@@ -1,0 +1,28 @@
+
+
+Starting wazuh-logtest v4.14.10
+Type one log per line
+
+**Phase 1: Completed pre-decoding.
+	full event: '{"integration": "mcp_lab", "mcp_action": "network_send", "tool": "send_dummy", "destination": "127.0.0.1", "source_path": "/tmp/mcp-evidence-lab/.env", "bytes": 21}'
+
+**Phase 2: Completed decoding.
+	name: 'json'
+	bytes: '21'
+	destination: '127.0.0.1'
+	integration: 'mcp_lab'
+	mcp_action: 'network_send'
+	source_path: '/tmp/mcp-evidence-lab/.env'
+	tool: 'send_dummy'
+
+**Phase 3: Completed filtering (rules).
+	id: '110503'
+	level: '10'
+	description: 'MCP tool transferred data from a credential-related path (lab: loopback only)'
+	groups: '['mcp_lab']'
+	firedtimes: '1'
+	mail: 'False'
+	mitre.id: '['T1048']'
+	mitre.tactic: '['Exfiltration']'
+	mitre.technique: '['Exfiltration Over Alternative Protocol']'
+**Alert to be generated.

@@ -2,24 +2,43 @@
   <rule id="110500" level="0">
     <decoded_as>json</decoded_as>
     <field name="integration">^mcp_lab$</field>
-    <description>MCP lab structured application event</description>
+    <description>MCP normalized application event</description>
   </rule>
   <rule id="110501" level="8">
     <if_sid>110500</if_sid>
     <field name="mcp_action">^file_read$</field>
-    <field name="sensitive">^yes$</field>
-    <description>MCP lab tool read a designated dummy sensitive file</description>
+    <field name="path" type="pcre2">(?:^|/)(?:\.ssh/|\.env(?:\.[^/]*)?$|\.aws/credentials$|\.kube/config$)</field>
+    <description>MCP tool read a credential-related path</description>
+    <mitre><id>T1552.001</id></mitre>
   </rule>
   <rule id="110502" level="8">
     <if_sid>110500</if_sid>
     <field name="mcp_action">^process_start$</field>
-    <field name="executable" type="pcre2">^/bin/(?:ba)?sh$</field>
-    <description>MCP lab tool started a shell</description>
+    <field name="executable" type="pcre2">^/(?:usr/(?:local/)?)?bin/(?:sh|bash|dash|zsh|ksh|ash)$</field>
+    <description>MCP tool started a Unix shell</description>
+    <mitre><id>T1059.004</id></mitre>
   </rule>
   <rule id="110503" level="10">
     <if_sid>110500</if_sid>
     <field name="mcp_action">^network_send$</field>
-    <field name="sensitive">^yes$</field>
-    <description>MCP lab tool sent designated dummy sensitive data</description>
+    <field name="source_path" type="pcre2">(?:^|/)(?:\.ssh/|\.env(?:\.[^/]*)?$|\.aws/credentials$|\.kube/config$)</field>
+    <description>MCP tool transferred data from a credential-related path (lab: loopback only)</description>
+    <mitre><id>T1048</id></mitre>
+  </rule>
+  <rule id="110504" level="8">
+    <if_sid>110500</if_sid>
+    <field name="mcp_action">^process_start$</field>
+    <field name="executable" type="pcre2">^/(?:usr/(?:local/)?)?bin/python(?:[23](?:\.[0-9]+)?)?$</field>
+    <field name="argument1">^-c$</field>
+    <description>MCP tool started Python inline code</description>
+    <mitre><id>T1059.006</id></mitre>
+  </rule>
+  <rule id="110505" level="8">
+    <if_sid>110500</if_sid>
+    <field name="mcp_action">^process_start$</field>
+    <field name="executable" type="pcre2">^/(?:usr/(?:local/)?)?bin/node(?:js)?$</field>
+    <field name="argument1" type="pcre2">^(?:-e|--eval)$</field>
+    <description>MCP tool started JavaScript inline code</description>
+    <mitre><id>T1059.007</id></mitre>
   </rule>
 </group>
